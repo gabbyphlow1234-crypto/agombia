@@ -42,7 +42,7 @@ const Ingredients: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#111] relative overflow-hidden">
+    <section id="ingredients" className="py-24 bg-[#111] relative overflow-hidden">
       {/* Dark Texture Background */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
       

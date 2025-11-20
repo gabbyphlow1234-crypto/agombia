@@ -15,7 +15,7 @@ const GalleryStrip: React.FC = () => {
   const marqueeImages = [...images, ...images];
 
   return (
-    <section className="bg-black py-16 border-b-4 border-[#D4AF37] overflow-hidden relative group/section">
+    <section id="gallery" className="bg-black py-16 border-b-4 border-[#D4AF37] overflow-hidden relative group/section">
       
       {/* SECTION HEADER OVERLAY */}
       <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex flex-col justify-center items-center opacity-0 group-hover/section:opacity-100 transition-opacity duration-700">

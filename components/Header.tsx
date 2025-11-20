@@ -30,11 +30,12 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  // RESTORED NAVIGATION LINKS
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'Benefits', href: '#benefits' },
     { name: 'Gallery', href: '#gallery' },
-    { name: 'Product', href: '#product' },
+    { name: 'Testimonies', href: '#testimonials' },
+    { name: 'Benefits', href: '#benefits' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -95,7 +96,7 @@ const Header: React.FC = () => {
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8 items-center">
+            <nav className="hidden md:flex space-x-6 lg:space-x-8 items-center">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -112,7 +113,7 @@ const Header: React.FC = () => {
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, '#contact')}
-                className="relative overflow-hidden group bg-[#FFD700] text-[#3E2723] px-6 py-2 rounded-full font-bold text-xs uppercase tracking-wider flex items-center cursor-pointer shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:shadow-[0_0_25px_rgba(255,215,0,0.6)] transition-all"
+                className="relative overflow-hidden group bg-[#FFD700] text-[#3E2723] px-6 py-2 rounded-full font-bold text-xs uppercase tracking-wider flex items-center cursor-pointer shadow-[0_0_15px_rgba(255,215,0,0.4)] hover:shadow-[0_0_25px_rgba(255,215,0,0.6)] transition-all ml-2"
               >
                 <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 skew-x-12"></div>
                 <span className="relative z-10">Order Now</span>

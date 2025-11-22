@@ -19,36 +19,46 @@ interface QuizState {
   goal?: string;
 }
 
-// --- KNOWLEDGE BASE ---
+// --- KNOWLEDGE BASE (EXPANDED) ---
 const KNOWLEDGE_BASE = [
   {
-    keywords: ['price', 'cost', 'how much', 'buy', 'cedis', 'ghc', 'money'],
+    keywords: ['price', 'cost', 'how much', 'buy', 'cedis', 'ghc', 'money', 'amount', 'pay', 'purchase', 'ordering', 'sell', 'pricing'],
     answer: "Agombia Capsules are sold at a standard national price.",
     type: 'product' // Triggers the Rich Media Product Card
   },
   {
-    keywords: ['dosage', 'dose', 'take', 'how to', 'usage', 'daily', 'drink'],
+    keywords: ['dosage', 'dose', 'take', 'how to', 'usage', 'daily', 'drink', 'directions', 'instruction', 'use', 'swallow', 'capsules', 'many'],
     answer: "Here is your Daily Vitality Protocol (6 Capsules Total):",
     type: 'dosage' // Triggers the Visual Dosage Card
   },
   {
-    keywords: ['pregnant', 'breastfeeding', 'lactating', 'baby', 'child', 'kids', '18'],
+    keywords: ['pregnant', 'breastfeeding', 'lactating', 'baby', 'child', 'children', 'kids', '18', 'minor', 'safe', 'safety', 'danger', 'harm', 'side effect', 'headache'],
     answer: "⚠️ **Safety Warning**:\n\nAgombia is NOT recommended for:\n• Pregnant women\n• Lactating mothers\n• Children under 18 years old.\n\nPlease consult your physician if you fall into these categories.",
     type: 'alert'
   },
   {
-    keywords: ['alcohol', 'drink', 'beer', 'wine', 'akpeteshie'],
+    keywords: ['alcohol', 'drink', 'beer', 'wine', 'akpeteshie', 'liquor', 'guinness', 'club', 'bitters'],
     answer: "Please **avoid alcohol** for at least 2 hours after taking your dose.\n\nAlcohol can dehydrate the system and reduce the efficacy of the herbal compounds.",
     type: 'warning'
   },
   {
-    keywords: ['location', 'office', 'where', 'shop', 'store', 'address', 'techiman'],
+    keywords: ['location', 'office', 'where', 'shop', 'store', 'address', 'techiman', 'visit', 'map', 'located', 'place', 'branch'],
     answer: "Our Head Office is located in **Techiman, Ghana**.\n\nHowever, Agombia is available at all leading Pharmacy, Chemical, and Herbal shops nationwide.",
     type: 'text'
   },
   {
-    keywords: ['delivery', 'ship', 'send', 'accra', 'kumasi', 'tamale'],
+    keywords: ['delivery', 'ship', 'send', 'accra', 'kumasi', 'tamale', 'region', 'wait', 'long', 'arrive', 'reach', 'dispatch'],
     answer: "Yes! We offer **Nationwide Dispatch** via VIP Parcel Services or FedEx.\n\n• **Accra/Kumasi:** Same or Next Day\n• **Other Regions:** 24-48 Hours\n• **Fee:** Paid by customer upon arrival.",
+    type: 'text'
+  },
+  {
+    keywords: ['hello', 'hi', 'hey', 'greetings', 'morning', 'afternoon', 'evening'],
+    answer: "Hello! Akwaaba. I am Adwoa. How can I help you with your health today?",
+    type: 'text'
+  },
+  {
+    keywords: ['work', 'effective', 'good', 'real', 'scam', 'fake', 'result', 'testimony', 'proof'],
+    answer: "Agombia is FDA approved and GMP certified. We have over 15,000 verified users. You can check our **Testimonials** section to see real video proof!",
     type: 'text'
   }
 ];
@@ -99,11 +109,6 @@ const ChatWidget: React.FC = () => {
       timestamp: getTime(),
       read: role === 'user' // User messages are read immediately
     }]);
-    
-    // Play subtle sound (simulated via log for now)
-    if (role === 'ai') {
-      // Audio cue logic would go here
-    }
   };
 
   const generateResponse = async (query: string) => {
@@ -111,7 +116,7 @@ const ChatWidget: React.FC = () => {
     setIsTyping(true);
     
     // Random delay for realism
-    const delay = 1000 + Math.random() * 1500;
+    const delay = 800 + Math.random() * 1000;
     await new Promise(resolve => setTimeout(resolve, delay));
 
     const lowerQuery = query.toLowerCase();
@@ -124,7 +129,8 @@ const ChatWidget: React.FC = () => {
       return;
     }
 
-    // NORMAL LOGIC
+    // NORMAL LOGIC (SMART MATCHING)
+    // Check if ANY keyword in the entry exists in the user query
     const match = KNOWLEDGE_BASE.find(entry => 
       entry.keywords.some(keyword => lowerQuery.includes(keyword))
     );
@@ -381,30 +387,31 @@ const ChatWidget: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* SUGGESTION CHIPS (Context Aware) */}
-          {!isTyping && !quiz.active && !showHumanCard && (
-             <div className="px-4 py-3 bg-white border-t border-gray-100 flex gap-2 overflow-x-auto no-scrollbar pb-4">
-                {[
-                   "Start Health Check 🩺",
-                   "How much is it? 💰",
-                   "How do I take it? 💊",
-                   "Is it safe? 🛡️",
-                   "Where are you located? 📍"
-                ].map((chip, i) => (
-                   <button 
-                     key={i}
-                     onClick={() => handleQuickChip(chip)}
-                     className={`whitespace-nowrap border text-[10px] font-bold uppercase px-3 py-1.5 rounded-full transition-all flex-shrink-0 shadow-sm ${
-                        chip.includes('Health') 
-                        ? 'bg-[#C8102E] text-white border-[#C8102E] hover:bg-[#A00D24]'
-                        : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-[#FFD700] hover:text-[#1A1A1A] hover:border-[#FFD700]'
-                     }`}
-                   >
-                      {chip}
-                   </button>
-                ))}
-             </div>
-          )}
+          {/* SUGGESTION CHIPS (ALWAYS VISIBLE) */}
+          <div className="px-4 py-3 bg-white border-t border-gray-100 flex gap-2 overflow-x-auto no-scrollbar pb-4">
+             {[
+                "Start Health Check 🩺",
+                "How much is it? 💰",
+                "How do I take it? 💊",
+                "Is it safe? 🛡️",
+                "Where are you located? 📍",
+                "Can I drink alcohol? 🍺",
+                "Do you deliver? 🚚"
+             ].map((chip, i) => (
+                <button 
+                  key={i}
+                  onClick={() => handleQuickChip(chip)}
+                  className={`whitespace-nowrap border text-[10px] font-bold uppercase px-3 py-1.5 rounded-full transition-all flex-shrink-0 shadow-sm ${
+                     chip.includes('Health') 
+                     ? 'bg-[#C8102E] text-white border-[#C8102E] hover:bg-[#A00D24]'
+                     : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-[#FFD700] hover:text-[#1A1A1A] hover:border-[#FFD700]'
+                  }`}
+                  disabled={quiz.active}
+                >
+                   {chip}
+                </button>
+             ))}
+          </div>
 
           {/* INPUT AREA */}
           <div className="bg-white p-3 border-t border-gray-200 flex items-center z-20">
@@ -446,7 +453,7 @@ const ChatWidget: React.FC = () => {
         
         <div className="relative w-16 h-16 rounded-full border-[3px] border-[#FFD700] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.3)] bg-white hover:scale-105 transition-transform duration-300">
            <img 
-              src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&q=80" 
+              src="https://i.postimg.cc/9QP5FvTZ/Gemini-Generated-Image-69pp6o69pp6o69pp.png" 
               alt="Chat" 
               className="w-full h-full object-cover"
            />

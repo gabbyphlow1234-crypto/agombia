@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -9,6 +10,7 @@ import Timeline from './components/Timeline';
 import ProductShowcase from './components/ProductShowcase';
 import DosageGuide from './components/DosageGuide';
 import ImageGrid from './components/ImageGrid';
+import CorporateIdentity from './components/CorporateIdentity';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Newsletter from './components/Newsletter';
@@ -31,6 +33,7 @@ function App() {
         <ProductShowcase />
         <Timeline />
         <ImageGrid />
+        <CorporateIdentity />
         <Testimonials />
         <DosageGuide />
         <FAQ />

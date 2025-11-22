@@ -1,5 +1,5 @@
 import React from 'react';
-import { Leaf, ArrowUp, Smartphone, CreditCard, ShieldCheck, Globe } from 'lucide-react';
+import { Leaf, ArrowUp, Smartphone, CreditCard, ShieldCheck, Globe, MapPin, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
                 <h3 className="text-3xl font-agombia text-white tracking-wide">Agombia</h3>
             </div>
             <p className="text-gray-400 leading-relaxed text-sm mb-6">
-              The gold standard in Ghanaian herbal medicine. We combine ancestral wisdom with modern safety protocols to restore vitality to the nation.
+              The gold standard in Ghanaian herbal medicine. Available at all leading Pharmacy, Chemical & Herbal Shops nationwide.
             </p>
             <div className="flex items-center text-xs font-bold text-[#FFD700] uppercase tracking-widest">
                <Globe className="w-4 h-4 mr-2" />
@@ -118,19 +118,28 @@ const Footer: React.FC = () => {
               <li><a href="#faq" onClick={(e) => handleScroll(e, '#faq')} className="text-gray-400 hover:text-[#FFD700] transition-colors">Knowledge Base</a></li>
               <li><a href="#dosage" onClick={(e) => handleScroll(e, '#dosage')} className="text-gray-400 hover:text-[#FFD700] transition-colors">Dosage Guide</a></li>
               <li><a href="#contact" onClick={(e) => handleScroll(e, '#contact')} className="text-gray-400 hover:text-[#FFD700] transition-colors">Track Order</a></li>
-              <li><a href="#contact" onClick={(e) => handleScroll(e, '#contact')} className="text-gray-400 hover:text-[#FFD700] transition-colors">Wholesale</a></li>
+              <li><a href="mailto:Bamfotex19@gmail.com" className="text-gray-400 hover:text-[#FFD700] transition-colors">Email Us</a></li>
             </ul>
           </div>
 
           {/* Location (4 cols) */}
           <div className="md:col-span-4">
-             <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-widest border-b-2 border-[#C8102E] inline-block pb-1">HQ Location</h3>
+             <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-widest border-b-2 border-[#C8102E] inline-block pb-1">Office Techiman</h3>
              <div className="bg-[#111] p-4 rounded-xl border border-gray-800">
                 <p className="text-gray-300 text-sm font-bold mb-1">Agombia Herbal Centre</p>
-                <p className="text-gray-500 text-xs mb-4">Adum, Kumasi - Ashanti Region, Ghana</p>
-                <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="text-[#FFD700] text-xs font-bold uppercase tracking-wide hover:underline">
-                   View on Google Maps &rarr;
-                </a>
+                <div className="flex items-center mt-2 text-gray-500 text-xs">
+                   <MapPin className="w-4 h-4 mr-2 text-[#C8102E]" />
+                   Office Techiman - Ghana
+                </div>
+                <div className="flex items-center mt-2 text-gray-500 text-xs">
+                   <Mail className="w-4 h-4 mr-2 text-[#C8102E]" />
+                   Bamfotex19@gmail.com
+                </div>
+                <div className="mt-4">
+                   <a href="tel:0244946525" className="text-[#FFD700] text-xs font-bold uppercase tracking-wide hover:underline">
+                      Call 024 494 6525
+                   </a>
+                </div>
              </div>
           </div>
         </div>
@@ -140,7 +149,7 @@ const Footer: React.FC = () => {
            <p className="font-agombia text-[#C8102E] text-lg tracking-widest uppercase mb-2">Medical Disclaimer</p>
            <p className="text-gray-400 text-xs max-w-3xl mx-auto leading-relaxed">
              Agombia Capsules are a herbal food supplement. They are not intended to diagnose, treat, cure, or prevent any disease. 
-             If you are pregnant, nursing, taking medication, or have a medical condition, consult your physician before using this product. 
+             Not recommended for pregnant women, lactating mothers, or children below 18 years old.
              Keep out of reach of children. Store in a cool, dry place.
            </p>
         </div>
@@ -148,7 +157,7 @@ const Footer: React.FC = () => {
         {/* COPYRIGHT & BACK TO TOP */}
         <div className="border-t border-gray-800 py-8 flex flex-col md:flex-row justify-between items-center">
            <p className="text-gray-600 text-xs uppercase tracking-wider mb-4 md:mb-0">
-             &copy; {new Date().getFullYear()} Agombia Herbal Centre. Engineered in Kumasi.
+             &copy; {new Date().getFullYear()} Agombia Herbal Centre. All Rights Reserved.
            </p>
            
            {/* THE TOTEM BUTTON */}

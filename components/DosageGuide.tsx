@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sun, Moon, Droplet, Utensils, AlertTriangle, CheckCircle2, Info, Clock } from 'lucide-react';
+import { Sun, Moon, Droplet, Utensils, AlertTriangle, CheckCircle2, Info, Clock, CloudSun, RefreshCw } from 'lucide-react';
 
 const DosageGuide: React.FC = () => {
   const [activeTip, setActiveTip] = useState<number | null>(null);
@@ -11,7 +11,7 @@ const DosageGuide: React.FC = () => {
     },
     {
       title: "Avoid Alcohol",
-      text: "Alcohol dehydrates the system and competes with the liver, reducing the efficacy of the herbs by up to 40%. Avoid alcohol for at least 2 hours after dosing."
+      text: "Alcohol dehydrates the system and competes with the liver, reducing the efficacy of the herbs. Avoid alcohol for at least 2 hours after dosing."
     },
     {
       title: "Missed a Dose?",
@@ -26,17 +26,53 @@ const DosageGuide: React.FC = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
            <div className="inline-flex items-center space-x-2 bg-[#1A1A1A] text-[#FFD700] px-4 py-1.5 rounded-full mb-4 border border-[#FFD700]">
              <Clock className="w-4 h-4 animate-spin-slow" style={{animationDuration: '10s'}} />
-             <span className="text-xs font-bold uppercase tracking-widest">24-Hour Protocol</span>
+             <span className="text-xs font-bold uppercase tracking-widest">Daily Protocol: 6 Capsules</span>
            </div>
            <h2 className="text-4xl md:text-5xl font-agombia text-[#1A1A1A] uppercase tracking-wide">
              The Circadian <span className="text-[#C8102E]">Ritual</span>
            </h2>
            <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
-             Agombia is synchronized with your body's natural rhythm. Follow the cycle for maximum absorption.
+             For maximum potency, take Agombia three times daily. Always after meals.
            </p>
+        </div>
+
+        {/* --- THE LIVING BIO-CLOCK ANIMATION (Restored) --- */}
+        <div className="relative w-64 h-64 mx-auto mb-16 hidden md:block">
+           {/* Outer Orbit Ring */}
+           <div className="absolute inset-0 rounded-full border-[1px] border-dashed border-gray-300 animate-spin-slow" style={{animationDuration: '60s'}}></div>
+           
+           {/* Active Cycle Ring */}
+           <div className="absolute inset-4 rounded-full border-4 border-transparent border-t-[#FFD700] border-r-[#FFA500] border-b-[#C8102E] animate-spin-slow" style={{animationDuration: '20s'}}></div>
+           
+           {/* Center Hub */}
+           <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+              <div className="text-5xl font-agombia text-[#1A1A1A] font-bold">6</div>
+              <div className="text-xs uppercase tracking-widest text-gray-500 font-bold mt-1">Capsules / Day</div>
+              <div className="mt-2 bg-[#C8102E] text-white text-[10px] px-2 py-0.5 rounded-full animate-pulse">ACTIVE CYCLE</div>
+           </div>
+
+           {/* Orbiting Icons */}
+           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md border border-[#FFD700]">
+              <Sun className="w-6 h-6 text-[#FFD700]" />
+           </div>
+           <div className="absolute bottom-4 right-0 bg-white p-2 rounded-full shadow-md border border-[#C8102E]">
+              <Moon className="w-6 h-6 text-[#C8102E]" />
+           </div>
+           <div className="absolute bottom-4 left-0 bg-white p-2 rounded-full shadow-md border border-orange-400">
+              <CloudSun className="w-6 h-6 text-orange-400" />
+           </div>
+        </div>
+           
+        {/* WARNING BANNER */}
+        <div className="mb-12 bg-red-100 border border-red-400 text-red-800 px-4 py-3 rounded-lg max-w-3xl mx-auto flex items-start text-left">
+            <AlertTriangle className="w-6 h-6 mr-3 flex-shrink-0 mt-1" />
+            <div>
+                <p className="font-bold uppercase text-sm mb-1">Safety Warning</p>
+                <p className="text-sm">Not recommended for pregnant women, lactating mothers, or children below 18 years old. Consult a physician if you have existing medical conditions.</p>
+            </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
@@ -44,7 +80,7 @@ const DosageGuide: React.FC = () => {
            {/* === MORNING CARD (SOLAR) === */}
            <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700] to-[#FFF0B4] rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl border-t-4 border-[#FFD700] overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl border-t-4 border-[#FFD700] overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full">
                  <div className="absolute top-0 right-0 p-6 opacity-10">
                     <Sun className="w-32 h-32 text-[#FFD700]" />
                  </div>
@@ -54,8 +90,8 @@ const DosageGuide: React.FC = () => {
                        <Sun className="w-8 h-8 text-[#D4AF37]" />
                     </div>
                     <div>
-                       <h3 className="font-agombia text-2xl text-[#1A1A1A] uppercase">Ignition</h3>
-                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">07:00 AM - 09:00 AM</p>
+                       <h3 className="font-agombia text-2xl text-[#1A1A1A] uppercase">Morning</h3>
+                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">After Breakfast</p>
                     </div>
                  </div>
 
@@ -64,7 +100,6 @@ const DosageGuide: React.FC = () => {
                     {[1, 2].map((i) => (
                        <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#C8102E] to-[#8B0000] relative shadow-lg transform rotate-12 border border-white/20">
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/10"></div>
-                          {/* Highlight */}
                           <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-30 rounded-full filter blur-[1px]"></div>
                        </div>
                     ))}
@@ -77,63 +112,57 @@ const DosageGuide: React.FC = () => {
                     </div>
                     <div className="flex items-center">
                        <Utensils className="w-5 h-5 text-gray-400 mr-3" />
-                       <span>After a full breakfast</span>
+                       <span>After a full meal</span>
                     </div>
                  </div>
 
                  <div className="bg-[#FFF8E1] rounded-lg p-3 text-center">
-                    <span className="text-[#D4AF37] font-agombia uppercase text-sm tracking-wide">Goal: Metabolic Activation</span>
+                    <span className="text-[#D4AF37] font-agombia uppercase text-sm tracking-wide">Activation</span>
                  </div>
               </div>
            </div>
 
-           {/* === CENTER: THE ABSORPTION MULTIPLIER === */}
-           <div className="relative flex flex-col items-center justify-center py-10 lg:py-0">
-              
-              {/* The Living Clock Visual */}
-              <div className="relative w-64 h-64 rounded-full border-4 border-gray-200 flex items-center justify-center bg-white shadow-inner mb-10">
-                 {/* Rotating Gradient Ring */}
-                 <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#C8102E] border-r-[#FFD700] animate-spin" style={{animationDuration: '8s'}}></div>
+           {/* === AFTERNOON CARD (NEW) === */}
+           <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-300 to-yellow-200 rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl border-t-4 border-orange-400 overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full">
+                 <div className="absolute top-0 right-0 p-6 opacity-10">
+                    <CloudSun className="w-32 h-32 text-orange-400" />
+                 </div>
                  
-                 {/* Inner Content */}
-                 <div className="text-center z-10">
-                    <div className="text-5xl font-agombia text-[#1A1A1A]">2x</div>
-                    <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Daily</div>
-                 </div>
-
-                 {/* Orbiting Nodes */}
-                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FFF] p-2 rounded-full shadow-md border border-[#FFD700]">
-                    <Sun className="w-6 h-6 text-[#FFD700]" />
-                 </div>
-                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#1A1A1A] p-2 rounded-full shadow-md border border-[#C8102E]">
-                    <Moon className="w-6 h-6 text-white" />
-                 </div>
-              </div>
-
-              {/* Absorption Accelerators */}
-              <div className="w-full max-w-xs bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-                 <h4 className="text-center font-agombia text-[#1A1A1A] uppercase tracking-wide mb-4">Absorption Boosters</h4>
-                 
-                 {/* Water Meter */}
-                 <div className="mb-4">
-                    <div className="flex justify-between text-xs font-bold uppercase text-gray-500 mb-1">
-                       <span className="flex items-center"><Droplet className="w-3 h-3 mr-1 text-blue-500" /> Water</span>
-                       <span>500ml Required</span>
+                 <div className="flex items-center mb-6 relative z-10">
+                    <div className="bg-orange-50 p-3 rounded-full mr-4 border border-orange-300">
+                       <CloudSun className="w-8 h-8 text-orange-500" />
                     </div>
-                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                       <div className="bg-blue-500 h-full w-4/5 animate-pulse"></div>
+                    <div>
+                       <h3 className="font-agombia text-2xl text-[#1A1A1A] uppercase">Afternoon</h3>
+                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">After Lunch</p>
                     </div>
                  </div>
 
-                 {/* Food Meter */}
-                 <div>
-                    <div className="flex justify-between text-xs font-bold uppercase text-gray-500 mb-1">
-                       <span className="flex items-center"><Utensils className="w-3 h-3 mr-1 text-orange-500" /> Food Base</span>
-                       <span>Heavy Meal</span>
+                 {/* 3D CSS CAPSULES */}
+                 <div className="flex space-x-4 mb-8 justify-center py-4 bg-gray-50 rounded-xl border border-gray-100">
+                    {[1, 2].map((i) => (
+                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#C8102E] to-[#8B0000] relative shadow-lg transform rotate-12 border border-white/20">
+                          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/10"></div>
+                          <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-30 rounded-full filter blur-[1px]"></div>
+                       </div>
+                    ))}
+                 </div>
+
+                 <div className="space-y-3 text-sm text-gray-600 mb-6">
+                    <div className="flex items-center">
+                       <CheckCircle2 className="w-5 h-5 text-orange-500 mr-3" />
+                       <span>Take <strong>2 Capsules</strong></span>
                     </div>
-                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                       <div className="bg-orange-500 h-full w-full"></div>
+                    <div className="flex items-center">
+                       <Utensils className="w-5 h-5 text-gray-400 mr-3" />
+                       <span>After a full meal</span>
                     </div>
+                 </div>
+
+                 <div className="bg-orange-50 rounded-lg p-3 text-center">
+                    <span className="text-orange-600 font-agombia uppercase text-sm tracking-wide">Sustain</span>
                  </div>
               </div>
            </div>
@@ -141,7 +170,7 @@ const DosageGuide: React.FC = () => {
            {/* === EVENING CARD (LUNAR) === */}
            <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-bl from-[#1A1A1A] to-[#2C3E50] rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div className="relative bg-[#1A1A1A] rounded-3xl p-8 shadow-xl border-t-4 border-[#C8102E] overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+              <div className="relative bg-[#1A1A1A] rounded-3xl p-8 shadow-xl border-t-4 border-[#C8102E] overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full">
                  <div className="absolute top-0 right-0 p-6 opacity-10">
                     <Moon className="w-32 h-32 text-white" />
                  </div>
@@ -151,8 +180,8 @@ const DosageGuide: React.FC = () => {
                        <Moon className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                       <h3 className="font-agombia text-2xl text-white uppercase">Restoration</h3>
-                       <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">07:00 PM - 09:00 PM</p>
+                       <h3 className="font-agombia text-2xl text-white uppercase">Evening</h3>
+                       <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">After Dinner</p>
                     </div>
                  </div>
 
@@ -161,7 +190,6 @@ const DosageGuide: React.FC = () => {
                     {[1, 2].map((i) => (
                        <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#C8102E] to-[#8B0000] relative shadow-lg transform -rotate-12 border border-white/10">
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/30"></div>
-                          {/* Highlight */}
                           <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-20 rounded-full filter blur-[1px]"></div>
                        </div>
                     ))}
@@ -174,12 +202,12 @@ const DosageGuide: React.FC = () => {
                     </div>
                     <div className="flex items-center">
                        <Utensils className="w-5 h-5 text-gray-600 mr-3" />
-                       <span>After a full dinner</span>
+                       <span>After a full meal</span>
                     </div>
                  </div>
 
                  <div className="bg-[#2A1A1A] rounded-lg p-3 text-center border border-[#C8102E]/30">
-                    <span className="text-[#C8102E] font-agombia uppercase text-sm tracking-wide">Goal: Cellular Repair</span>
+                    <span className="text-[#C8102E] font-agombia uppercase text-sm tracking-wide">Repair</span>
                  </div>
               </div>
            </div>

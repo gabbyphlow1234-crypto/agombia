@@ -86,7 +86,7 @@ const ProductShowcase: React.FC = () => {
           {/* Urgency Banner */}
           <div className="inline-flex items-center space-x-2 bg-red-900/30 border border-red-500/30 rounded px-3 py-1 mb-6 animate-pulse">
              <AlertCircle className="w-4 h-4 text-red-500" />
-             <span className="text-xs text-red-400 font-mono uppercase tracking-widest">High Demand: Low Stock in Kumasi</span>
+             <span className="text-xs text-red-400 font-mono uppercase tracking-widest">High Demand: Low Stock</span>
           </div>
 
           <h2 className="text-5xl font-agombia text-white sm:text-6xl mb-2 leading-none">
@@ -94,7 +94,7 @@ const ProductShowcase: React.FC = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFF0B4] to-[#B8860B] drop-shadow-sm">Proven.</span>
           </h2>
           <p className="text-lg text-gray-400 mb-8 font-light border-l-4 border-[#FFD700] pl-4">
-            The complete restoration kit. No fillers, no synthetics, just the raw power of the Ghanaian rainforest in a 750mg capsule.
+            The complete restoration kit. No fillers, no synthetics, just the raw power of the Ghanaian rainforest. <span className="text-[#FFD700] font-bold">Retail Price: GHC 35.00</span>
           </p>
           
           {/* The Value Stack Cards */}
@@ -116,8 +116,8 @@ const ProductShowcase: React.FC = () => {
              <div className="bg-[#1A1A1A] border border-gray-800 p-4 rounded-xl flex items-start hover:border-[#FFD700] transition-colors group">
                 <CheckCircle className="w-6 h-6 text-[#FFD700] mr-3 group-hover:scale-110 transition-transform" />
                 <div>
-                   <h4 className="text-white font-bold text-sm uppercase">Fast Acting</h4>
-                   <p className="text-gray-500 text-xs mt-1">Absorbs in 45 minutes</p>
+                   <h4 className="text-white font-bold text-sm uppercase">Wholesale</h4>
+                   <p className="text-gray-500 text-xs mt-1">GHC 25/box (Carton of 200)</p>
                 </div>
              </div>
              <div className="bg-[#1A1A1A] border border-gray-800 p-4 rounded-xl flex items-start hover:border-[#FFD700] transition-colors group">
@@ -134,9 +134,9 @@ const ProductShowcase: React.FC = () => {
                 href="#contact"
                 className="agombia-btn w-full sm:w-auto px-10 py-4 text-lg font-bold rounded-full font-agombia tracking-wide shadow-[0_0_30px_rgba(255,215,0,0.2)] text-center"
               >
-                Claim Your Bottle
+                Order Now - GHC 35
               </a>
-              <span className="text-gray-500 text-sm">Free delivery on 2+ packs</span>
+              <span className="text-gray-500 text-sm">Available at all leading pharmacies</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Leaf, ShoppingCart, Truck, Clock, AlertCircle } from 'lucide-react';
+import { Menu, X, Leaf, ShoppingCart, Truck, Clock, PhoneCall } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     "LIVE: Dispatch truck leaving Kumasi Depot...",
     "ALERT: Low stock warning in Greater Accra Region...",
     "UPDATE: 142 orders processed in the last hour...",
-    "PROMO: Free delivery on 3+ packs ends today..."
+    "PROMO: Retail Price GHC 35 per box..."
   ];
 
   useEffect(() => {
@@ -54,10 +54,8 @@ const Header: React.FC = () => {
       {/* 1. THE LOGISTICS TICKER (Urgency Bar) */}
       <div className="bg-black text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-2 overflow-hidden relative border-b border-[#C8102E]">
          <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <div className="flex items-center text-[#FFD700]">
-               <div className="w-2 h-2 bg-[#C8102E] rounded-full animate-pulse mr-2"></div>
-               <span className="hidden md:inline mr-1">System Status:</span> ONLINE
-            </div>
+            {/* Empty div to maintain layout balance with justify-between */}
+            <div></div>
             
             {/* Animated Message */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-full max-w-md text-center transition-opacity duration-500 ease-in-out flex justify-center items-center">
@@ -109,6 +107,15 @@ const Header: React.FC = () => {
                 </a>
               ))}
               
+              {/* Call Us Button (Replaces generic Message button) */}
+              <a
+                href="tel:0244946525"
+                className="bg-[#C8102E] hover:bg-[#a00d24] text-white px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider flex items-center cursor-pointer shadow-md transition-all ml-2 border border-white/20"
+              >
+                <PhoneCall className="w-4 h-4 mr-2" />
+                Call Us
+              </a>
+
               {/* Heartbeat Order Button */}
               <a
                 href="#contact"
@@ -123,6 +130,9 @@ const Header: React.FC = () => {
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
+              <a href="tel:0244946525" className="mr-4 text-[#FFD700] border border-[#FFD700] rounded-full p-2">
+                 <PhoneCall className="w-5 h-5" />
+              </a>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`${scrolled ? 'text-[#1A1A1A]' : 'text-white'} hover:text-[#FFD700] p-2 focus:outline-none`}
@@ -147,13 +157,21 @@ const Header: React.FC = () => {
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, '#contact')}
-                className="w-full text-center bg-[#FFD700] text-[#3E2723] block px-3 py-4 rounded-md text-sm font-bold uppercase tracking-wider mt-4 shadow-lg cursor-pointer"
-              >
-                Order Now
-              </a>
+              <div className="grid grid-cols-2 gap-2 mt-4 px-3">
+                 <a
+                   href="tel:0244946525"
+                   className="w-full text-center bg-white text-[#C8102E] block px-3 py-4 rounded-md text-sm font-bold uppercase tracking-wider shadow-lg cursor-pointer flex items-center justify-center"
+                 >
+                   <PhoneCall className="w-4 h-4 mr-2" /> Call Us
+                 </a>
+                 <a
+                   href="#contact"
+                   onClick={(e) => handleNavClick(e, '#contact')}
+                   className="w-full text-center bg-[#FFD700] text-[#3E2723] block px-3 py-4 rounded-md text-sm font-bold uppercase tracking-wider shadow-lg cursor-pointer"
+                 >
+                   Order Now
+                 </a>
+              </div>
             </div>
           </div>
         )}

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Star, CheckCircle, MapPin, Receipt, Filter, ChevronLeft, ChevronRight, Camera, ThumbsUp, Users, Clock, Quote, PlayCircle } from 'lucide-react';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { Star, CheckCircle, MapPin, Receipt, Filter, ChevronLeft, ChevronRight, Camera, ThumbsUp, Users, Clock, Quote, PlayCircle, Video, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
 // --- DATA: THE MASSIVE TRUST DATABASE ---
 const allTestimonials = [
@@ -260,14 +261,78 @@ const allTestimonials = [
   }
 ];
 
-const customerPhotos = [
-  "https://i.postimg.cc/Jtw5mJdg/Gemini-Generated-Image-78cecl78cecl78ce-(1).jpg",
-  "https://i.postimg.cc/5jcS1vkL/Gemini-Generated-Image-fcx5b3fcx5b3fcx5.jpg",
-  "https://i.postimg.cc/Sj0fq8t3/Gemini-Generated-Image-x4bg2ux4bg2ux4bg.jpg",
-  "https://i.postimg.cc/vTxtpXXh/Gemini-Generated-Image-lhk5cclhk5cclhk5.jpg",
-  "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=800",
-  "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&q=80&w=800",
+const vimeoVideos = [
+    { id: "1139534238", title: "Agombia Testimonial 1", caption: "Restored Vitality" },
+    { id: "1139534261", title: "Agombia Testimonial 2", caption: "Waist Pain Relief" },
+    { id: "1139534341", title: "Agombia Testimonial 3", caption: "Immune Boost" },
+    { id: "1139534212", title: "Agombia Testimonial 4", caption: "Energy Levels" },
+    { id: "1139534295", title: "Agombia Testimonial 5", caption: "Natural Balance" },
+    { id: "1139534319", title: "Agombia Testimonial 6", caption: "General Wellness" }
 ];
+
+const VimeoPlayer = ({ videoId, title }: { videoId: string, title: string }) => {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const sendCommand = (method: string, value?: any) => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      const msg = value !== undefined ? { method, value } : { method };
+      iframeRef.current.contentWindow.postMessage(JSON.stringify(msg), '*');
+    }
+  };
+
+  const handlePlayToggle = () => {
+    const nextState = !isPlaying;
+    setIsPlaying(nextState);
+    sendCommand(nextState ? 'play' : 'pause');
+  };
+
+  const handleMuteToggle = () => {
+    const nextState = !isMuted;
+    setIsMuted(nextState);
+    sendCommand('setVolume', nextState ? 0 : 1);
+  };
+
+  return (
+    <div className="relative w-full bg-black group/video" style={{ paddingBottom: '133.33%' }}>
+      <iframe
+        ref={iframeRef}
+        src={`https://player.vimeo.com/video/${videoId}?api=1&badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0`}
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        title={title}
+      ></iframe>
+      
+      {/* Agombia Custom Controls Overlay */}
+      <div className="absolute inset-0 pointer-events-none flex flex-col justify-between transition-opacity duration-300">
+         
+         {/* Center Play Button (Visible when paused) */}
+         <div className={`flex-grow flex items-center justify-center ${isPlaying ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}>
+            <button 
+              onClick={handlePlayToggle} 
+              className="w-16 h-16 bg-[#C8102E]/90 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-[0_0_20px_rgba(200,16,46,0.5)] pointer-events-auto border-2 border-[#FFD700]"
+            >
+               <Play className="w-8 h-8 text-[#FFD700] ml-1 fill-current" />
+            </button>
+         </div>
+
+         {/* Bottom Control Bar (Visible on hover) */}
+         <div className="bg-gradient-to-t from-black/90 to-transparent p-4 flex justify-between items-center opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 pointer-events-auto">
+            <button onClick={handlePlayToggle} className="text-white hover:text-[#FFD700] transition-colors">
+               {isPlaying ? <Pause className="w-6 h-6 fill-current" /> : <Play className="w-6 h-6 fill-current" />}
+            </button>
+            
+            <button onClick={handleMuteToggle} className="text-white hover:text-[#FFD700] transition-colors">
+               {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+            </button>
+         </div>
+      </div>
+    </div>
+  );
+};
 
 const Testimonials: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -335,51 +400,57 @@ const Testimonials: React.FC = () => {
            </div>
         </div>
 
-        {/* --- SECTION 1.5: THE SPOTLIGHT STORY (FEATURED) --- */}
-        <div className="mb-16 relative group cursor-pointer">
-           <div className="absolute inset-0 bg-[#1A1A1A] rounded-3xl transform translate-x-2 translate-y-2"></div>
-           <div className="relative bg-[#C8102E] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
-              {/* Left: Image / Video Placeholder */}
-              <div className="md:w-5/12 relative h-64 md:h-auto overflow-hidden">
-                 <img 
-                   src="https://i.postimg.cc/Jtw5mJdg/Gemini-Generated-Image-78cecl78cecl78ce-(1).jpg" 
-                   alt="Featured Story" 
-                   className="w-full h-full object-cover object-top filter brightness-75 group-hover:scale-105 transition-transform duration-700"
-                 />
-                 <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white group-hover:scale-110 transition-transform duration-300">
-                       <PlayCircle className="w-10 h-10 text-white fill-current" />
-                    </div>
-                 </div>
-                 <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur px-3 py-1 rounded text-white text-xs font-bold uppercase">
-                    Featured Story
-                 </div>
-              </div>
-              
-              {/* Right: Content */}
-              <div className="md:w-7/12 p-8 md:p-12 text-white flex flex-col justify-center">
-                 <div className="flex items-center mb-4 text-[#FFD700]">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-                 </div>
-                 <Quote className="w-10 h-10 text-white/20 mb-2 rotate-180" />
-                 <h3 className="text-2xl md:text-4xl font-agombia uppercase leading-tight mb-4">
-                    "I thought I was too old to feel this strong again."
-                 </h3>
-                 <p className="text-white/80 text-lg italic mb-6 font-light">
-                    — Mr. Osei, 62, retired teacher from Kumasi, shares his journey of reclaiming his vitality and waist health in just 3 weeks.
-                 </p>
-                 <div className="flex items-center space-x-4">
-                    <div className="flex items-center text-sm font-bold">
-                       <CheckCircle className="w-4 h-4 text-[#FFD700] mr-2" /> Verified Purchase
-                    </div>
-                    <div className="h-4 w-px bg-white/30"></div>
-                    <div className="text-sm text-[#FFD700] font-mono uppercase">Result: Total Restoration</div>
-                 </div>
-              </div>
-           </div>
+        {/* --- SECTION 2: THE VIDEO VAULT (UPGRADED) --- */}
+        <div className="mb-24 relative">
+            {/* Decorative Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#FFF8E1] to-transparent rounded-3xl opacity-50 pointer-events-none"></div>
+
+            <div className="relative z-10 p-8">
+               <div className="text-center mb-12">
+                  <div className="inline-flex items-center space-x-2 bg-[#1A1A1A] text-[#FFD700] px-4 py-1.5 rounded-full mb-4 border border-[#FFD700] shadow-lg">
+                     <PlayCircle className="w-4 h-4 animate-pulse" />
+                     <span className="text-xs font-bold uppercase tracking-widest">Video Proof</span>
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-agombia text-[#1A1A1A] uppercase tracking-tight">
+                    Voices of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C8102E] to-[#B8860B]">Agombia</span>
+                  </h3>
+                  <p className="text-gray-500 mt-2 max-w-xl mx-auto">Watch authentic experiences from real verified customers across the nation.</p>
+               </div>
+
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {vimeoVideos.map((video, idx) => (
+                      <div key={idx} className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                          
+                          {/* Gold Top Accent */}
+                          <div className="h-1 w-full bg-gradient-to-r from-[#FFD700] via-[#D4AF37] to-[#FFD700]"></div>
+
+                          {/* Video Container with Custom Player */}
+                          <VimeoPlayer videoId={video.id} title={video.title} />
+
+                          {/* Metadata Bar */}
+                          <div className="p-4 bg-white relative">
+                               <div className="flex justify-between items-center mb-2">
+                                  <div className="flex items-center text-[#C8102E] text-[10px] font-bold uppercase tracking-widest">
+                                     <CheckCircle className="w-3 h-3 mr-1" />
+                                     Verified User
+                                  </div>
+                                  <div className="text-[#FFD700]">
+                                     <Star className="w-3 h-3 fill-current inline" />
+                                     <Star className="w-3 h-3 fill-current inline" />
+                                     <Star className="w-3 h-3 fill-current inline" />
+                                     <Star className="w-3 h-3 fill-current inline" />
+                                     <Star className="w-3 h-3 fill-current inline" />
+                                  </div>
+                               </div>
+                               <h4 className="font-agombia text-[#1A1A1A] text-lg uppercase">{video.caption}</h4>
+                          </div>
+                      </div>
+                  ))}
+               </div>
+            </div>
         </div>
 
-        {/* --- SECTION 2: INTELLIGENT FILTERS --- */}
+        {/* --- SECTION 3: INTELLIGENT FILTERS --- */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-10">
            <div className="flex space-x-2 bg-white p-1 rounded-full shadow-sm border border-gray-200 mb-4 md:mb-0">
               {categories.map(cat => (
@@ -402,7 +473,7 @@ const Testimonials: React.FC = () => {
            </div>
         </div>
 
-        {/* --- SECTION 3: THE REVIEW GRID --- */}
+        {/* --- SECTION 4: THE REVIEW GRID --- */}
         <div id="reviews-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {currentTestimonials.map((t) => (
             <div 
@@ -448,7 +519,7 @@ const Testimonials: React.FC = () => {
                      <h5 className="font-agombia text-[#C8102E] text-xl uppercase leading-none tracking-wide">{t.headline}</h5>
                   </div>
 
-                  {/* TIME-TO-RESULT TAG (REPLACES AUDIO) */}
+                  {/* TIME-TO-RESULT TAG */}
                   <div className="mb-4">
                      <div className="inline-flex items-center bg-green-50 border border-green-200 px-3 py-1 rounded-full">
                         <Clock className="w-3 h-3 text-green-600 mr-2" />
@@ -479,7 +550,7 @@ const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        {/* --- SECTION 4: PAGINATION CONTROLS --- */}
+        {/* --- SECTION 5: PAGINATION CONTROLS --- */}
         {totalPages > 1 && (
           <div className="flex justify-center items-center space-x-4 mb-24">
              <button 
@@ -515,41 +586,11 @@ const Testimonials: React.FC = () => {
              </button>
           </div>
         )}
-
-        {/* --- SECTION 5: THE WALL OF LOVE (GALLERY) --- */}
-        <div className="border-t border-gray-200 pt-16">
-           <div className="text-center mb-12">
-              <div className="inline-flex items-center space-x-2 bg-[#FFF8E1] text-[#B8860B] px-4 py-1.5 rounded-full mb-4 border border-[#FFD700]">
-                 <Camera className="w-4 h-4" />
-                 <span className="text-xs font-bold uppercase tracking-widest">The Community</span>
-              </div>
-              <h3 className="text-3xl font-agombia text-[#1A1A1A] uppercase">
-                Faces of <span className="text-[#C8102E]">Agombia</span>
-              </h3>
-              <p className="text-gray-500 mt-2">Join the thousands showing off their results.</p>
-           </div>
-
-           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {customerPhotos.map((photo, idx) => (
-                 <div key={idx} className="relative group aspect-square rounded-xl overflow-hidden cursor-pointer">
-                    <img 
-                      src={photo} 
-                      alt="Happy Customer" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-                    />
-                    <div className="absolute inset-0 bg-[#C8102E]/80 opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
-                    <div className="absolute bottom-2 right-2 bg-white p-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                       <Star className="w-3 h-3 text-[#FFD700] fill-current" />
-                    </div>
-                 </div>
-              ))}
-           </div>
-           
-           <div className="mt-10 text-center">
-              <a href="#contact" className="inline-flex items-center text-[#C8102E] font-bold uppercase tracking-widest text-sm border-b-2 border-[#C8102E] pb-1 hover:text-[#1A1A1A] hover:border-[#1A1A1A] transition-colors">
-                 Submit Your Story <ChevronRight className="w-4 h-4 ml-1" />
-              </a>
-           </div>
+        
+        <div className="mt-10 text-center">
+            <a href="#contact" className="inline-flex items-center text-[#C8102E] font-bold uppercase tracking-widest text-sm border-b-2 border-[#C8102E] pb-1 hover:text-[#1A1A1A] hover:border-[#1A1A1A] transition-colors">
+                Submit Your Story <ChevronRight className="w-4 h-4 ml-1" />
+            </a>
         </div>
 
       </div>

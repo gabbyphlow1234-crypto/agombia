@@ -113,13 +113,13 @@ const Benefits: React.FC = () => {
                    <div className="bg-[#FFD700] p-2 rounded-md mr-4 shadow-lg">
                       <Sparkles className="h-6 w-6 text-[#1A1A1A]" />
                    </div>
-                   <div>
+                   <div className="md:pr-48">
                        <h3 className="text-3xl font-agombia text-[#1A1A1A] uppercase tracking-wide">Agombia Woman</h3>
                        <p className="text-xs text-[#D4AF37] font-mono uppercase tracking-widest">System: <span className="animate-pulse">BALANCING RADIANCE</span></p>
                    </div>
                 </div>
 
-                <p className="text-gray-600 mb-10 font-light italic border-l-4 border-[#FFD700] pl-4 pr-20">
+                <p className="text-gray-600 mb-10 font-light italic border-l-4 border-[#FFD700] pl-4 pr-20 md:pr-56">
                   "Agombia unlocks the natural rhythm of the female body. It acts as a powerful harmonizer, correcting imbalances."
                 </p>
 

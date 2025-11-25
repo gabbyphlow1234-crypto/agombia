@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { ShieldCheck, MapPin, Award, Building2, CheckCircle, Search, X, ZoomIn, Maximize2 } from 'lucide-react';
+import { ShieldCheck, MapPin, Award, Building2, CheckCircle, Search, X, ZoomIn, Maximize2, User } from 'lucide-react';
 
 const CorporateIdentity: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -65,8 +64,44 @@ const CorporateIdentity: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* --- LEFT COLUMN: THE FLAGSHIP (Product) --- */}
-          <div className="lg:col-span-5">
+          {/* --- LEFT COLUMN: THE FLAGSHIP & CEO (5 cols) --- */}
+          <div className="lg:col-span-5 space-y-8">
+             
+             {/* CEO LEADERSHIP CARD (New) */}
+             <div 
+               onClick={() => openLightbox("https://i.postimg.cc/m2pf6L2J/Gemini_Generated_Image_5d6bmb5d6bmb5d6b.png", ",MR BAMFO - Founder & CEO - MR BAMFO")}
+               className="relative bg-[#0F0F0F] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37] group cursor-pointer h-[400px]"
+             >
+                {/* Gold Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-80"></div>
+                
+                {/* CEO Image */}
+                <img 
+                  src="https://i.postimg.cc/m2pf6L2J/Gemini_Generated_Image_5d6bmb5d6bmb5d6b.png" 
+                  alt="Agombia CEO" 
+                  className="w-full h-full object-cover object-top transform transition-transform duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute bottom-0 left-0 w-full p-6 z-20">
+                   <div className="flex items-center space-x-2 mb-2">
+                      <div className="bg-[#D4AF37] p-1 rounded-full">
+                         <User className="w-3 h-3 text-black" />
+                      </div>
+                      <span className="text-[#FFD700] text-[10px] font-bold uppercase tracking-widest">Leadership</span>
+                   </div>
+                   <h3 className="text-white font-agombia text-2xl uppercase tracking-wide">The Founder</h3>
+                   <p className="text-gray-400 text-xs font-light mt-1 border-l-2 border-[#D4AF37] pl-2">
+                      Visionary behind the Agombia Standard.
+                   </p>
+                </div>
+
+                {/* Interactive Icon */}
+                <div className="absolute top-4 right-4 z-20 bg-black/50 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all border border-[#FFD700]">
+                   <Maximize2 className="w-4 h-4 text-[#FFD700]" />
+                </div>
+             </div>
+
+             {/* PRODUCT CARD */}
              <div 
                onClick={() => openLightbox("https://i.postimg.cc/8zzmXYDD/Gemini-Generated-Image-6tx5j66tx5j66tx5.jpg", "Agombia Capsules - Premium Packaging")}
                className="bg-gradient-to-b from-[#F9F9F9] to-white rounded-3xl p-8 border border-gray-100 shadow-2xl relative group overflow-hidden cursor-pointer hover:border-[#FFD700] transition-colors duration-300"
@@ -102,7 +137,7 @@ const CorporateIdentity: React.FC = () => {
              </div>
           </div>
 
-          {/* --- RIGHT COLUMN: THE VERIFICATION MATRIX --- */}
+          {/* --- RIGHT COLUMN: THE VERIFICATION MATRIX (7 cols) --- */}
           <div className="lg:col-span-7 space-y-8">
              
              {/* 1. FDA CERTIFICATION (Hero Document) */}

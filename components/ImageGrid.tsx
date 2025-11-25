@@ -3,7 +3,7 @@ import React from 'react';
 const ImageGrid: React.FC = () => {
   const images = [
     "https://i.postimg.cc/Jtw5mJdg/Gemini-Generated-Image-78cecl78cecl78ce-(1).jpg", // Hero Model
-    "https://i.postimg.cc/fk4fZXgP/Gemini-Generated-Image-dcvc9mdcvc9mdcvc-(1).jpg", // Lifestyle
+    "https://i.postimg.cc/C5WGpdt0/Gemini_Generated_Image_igi4sigi4sigi4si.jpg", // Lifestyle
     "https://i.postimg.cc/rz6NcWY5/Gemini-Generated-Image-ci4zn7ci4zn7ci4z.jpg", // Product Box
     "https://i.postimg.cc/5jcS1vkL/Gemini-Generated-Image-fcx5b3fcx5b3fcx5.jpg", // Lifestyle
     "https://i.postimg.cc/Sj0fq8t3/Gemini-Generated-Image-x4bg2ux4bg2ux4bg.jpg", // Lifestyle

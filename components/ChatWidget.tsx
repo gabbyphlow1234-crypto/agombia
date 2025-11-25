@@ -207,7 +207,7 @@ const ChatWidget: React.FC = () => {
               <div className="relative mr-3">
                 <div className="w-12 h-12 rounded-full border-2 border-[#FFD700] overflow-hidden p-0.5 bg-white">
                   <img 
-                     src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&q=80" 
+                     src="https://i.postimg.cc/Y0J6BjVt/Gemini_Generated_Image_v38pudv38pudv38p.jpg" 
                      alt="Adwoa AI" 
                      className="w-full h-full rounded-full object-cover"
                   />
@@ -271,7 +271,7 @@ const ChatWidget: React.FC = () => {
                        <p className="mb-3">{msg.content}</p>
                        <div className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
                           <div className="h-32 bg-white flex items-center justify-center p-2">
-                             <img src="https://i.postimg.cc/rz6NcWY5/Gemini-Generated-Image-ci4zn7ci4zn7ci4z.jpg" alt="Product" className="h-full object-contain" />
+                             <img src="https://i.postimg.cc/Y0J6BjVt/Gemini_Generated_Image_v38pudv38pudv38p.jpg" alt="Product" className="h-full object-contain" />
                           </div>
                           <div className="p-3">
                              <div className="flex justify-between items-start">
@@ -453,7 +453,7 @@ const ChatWidget: React.FC = () => {
         
         <div className="relative w-16 h-16 rounded-full border-[3px] border-[#FFD700] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.3)] bg-white hover:scale-105 transition-transform duration-300">
            <img 
-              src="https://i.postimg.cc/9QP5FvTZ/Gemini-Generated-Image-69pp6o69pp6o69pp.png" 
+              src="https://i.postimg.cc/Y0J6BjVt/Gemini_Generated_Image_v38pudv38pudv38p.jpg" 
               alt="Chat" 
               className="w-full h-full object-cover"
            />

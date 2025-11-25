@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, ShieldCheck, Leaf, Star, Play, Sun, Crown } from 'lucide-react';
 
@@ -94,21 +93,22 @@ const Hero: React.FC = () => {
                   Order The Original
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
-                <a 
-                   href="#testimonials"
-                   onClick={(e) => handleScroll(e, '#testimonials')}
-                   className="flex items-center justify-center sm:justify-start space-x-3 cursor-pointer group"
-                >
+                <div className="flex items-center justify-center sm:justify-start space-x-3 cursor-pointer group">
                    <div className="w-12 h-12 rounded-full border-2 border-[#1A1A1A] flex items-center justify-center group-hover:bg-[#1A1A1A] transition-colors">
                       <Play className="w-4 h-4 text-[#1A1A1A] group-hover:text-[#FFD700] fill-current ml-1" />
                    </div>
                    <span className="text-xs font-bold text-[#1A1A1A] uppercase tracking-widest group-hover:text-[#C8102E] transition-colors">See The Proof</span>
-                </a>
+                </div>
             </div>
 
-            {/* Trust Badges - FDA REMOVED */}
+            {/* Trust Badges (Darker text for Light Mode) */}
             <div className="mt-12 flex items-center justify-center lg:justify-start space-x-8 animate-fade-in-up opacity-80" style={{animationDelay: '0.8s'}}>
                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Ghana.svg/1200px-Flag_of_Ghana.svg.png" alt="Ghana" className="h-6 w-auto grayscale opacity-50 hover:grayscale-0 transition-all" />
+               <div className="h-4 w-px bg-gray-300"></div>
+               <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-[#C8102E]" />
+                  <span className="text-[10px] text-gray-600 font-black uppercase tracking-widest">FDA Approved & Certified</span>
+               </div>
             </div>
           </div>
 

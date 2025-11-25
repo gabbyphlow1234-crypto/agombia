@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Search, ShieldCheck, Truck, Info, Leaf, ThumbsUp, Sparkles, BookOpen } from 'lucide-react';
 
@@ -49,7 +50,7 @@ const FAQ: React.FC = () => {
       category: "Shipping & Orders",
       question: "Do you deliver outside Accra?",
       answer: "Yes, we deliver nationwide via VIP Parcel services or FedEx to all regions (Kumasi, Tamale, Takoradi, etc.).",
-      note: "Delivery usually takes 24-48 hours depending on location.",
+      note: "Delivery usually takes 24-72 hours depending on location.",
       helpful: "96%"
     },
     {
@@ -212,7 +213,7 @@ const FAQ: React.FC = () => {
                     </li>
                     <li className="flex justify-between">
                        <span>Other Regions:</span>
-                       <span className="font-bold text-[#1A1A1A]">48 Hours</span>
+                       <span className="font-bold text-[#1A1A1A]">72 Hours</span>
                     </li>
                  </ul>
               </div>

@@ -374,7 +374,7 @@ const ChatWidget: React.FC = () => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                     <a href="https://wa.me/233591465273" target="_blank" rel="noreferrer" className="flex items-center justify-center bg-[#25D366] text-white py-2 rounded-lg text-xs font-bold uppercase hover:bg-[#1EBE5D] transition-colors shadow-sm">
+                     <a href="https://wa.me/233244946525" target="_blank" rel="noreferrer" className="flex items-center justify-center bg-[#25D366] text-white py-2 rounded-lg text-xs font-bold uppercase hover:bg-[#1EBE5D] transition-colors shadow-sm">
                         <MessageCircle className="w-4 h-4 mr-2" /> WhatsApp
                      </a>
                      <a href="tel:0244946525" className="flex items-center justify-center bg-[#1A1A1A] text-white py-2 rounded-lg text-xs font-bold uppercase hover:bg-[#333] transition-colors shadow-sm">

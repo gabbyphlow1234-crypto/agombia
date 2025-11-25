@@ -129,7 +129,7 @@ const Hero: React.FC = () => {
                    
                    {/* THE MODEL IMAGE */}
                    <img 
-                      src="https://i.postimg.cc/vTxtpXXh/Gemini_Generated_Image_lhk5cclhk5cclhk5.jpg" 
+                      src="https://i.postimg.cc/L6QK096r/Gemini_Generated_Image_xkfddcxkfddcxkfd.png" 
                       alt="Agombia Royal" 
                       className="w-full h-full object-cover object-top transform scale-105 group-hover:scale-110 transition-transform duration-[2s]"
                    />

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Sun, Moon, Droplet, Utensils, AlertTriangle, CheckCircle2, Info, Clock, CloudSun, RefreshCw } from 'lucide-react';
 
@@ -95,11 +96,13 @@ const DosageGuide: React.FC = () => {
                     </div>
                  </div>
 
-                 {/* 3D CSS CAPSULES */}
+                 {/* 3D CSS CAPSULES: YELLOW TOP / LIGHT BROWN BOTTOM */}
                  <div className="flex space-x-4 mb-8 justify-center py-4 bg-gray-50 rounded-xl border border-gray-100">
                     {[1, 2].map((i) => (
-                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#C8102E] to-[#8B0000] relative shadow-lg transform rotate-12 border border-white/20">
+                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#D2691E] to-[#8B4513] relative shadow-lg transform rotate-12 border border-white/20">
+                          {/* Top Half: Yellow */}
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/10"></div>
+                          {/* Reflection */}
                           <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-30 rounded-full filter blur-[1px]"></div>
                        </div>
                     ))}
@@ -140,10 +143,10 @@ const DosageGuide: React.FC = () => {
                     </div>
                  </div>
 
-                 {/* 3D CSS CAPSULES */}
+                 {/* 3D CSS CAPSULES: YELLOW TOP / LIGHT BROWN BOTTOM */}
                  <div className="flex space-x-4 mb-8 justify-center py-4 bg-gray-50 rounded-xl border border-gray-100">
                     {[1, 2].map((i) => (
-                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#C8102E] to-[#8B0000] relative shadow-lg transform rotate-12 border border-white/20">
+                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#D2691E] to-[#8B0000] relative shadow-lg transform rotate-12 border border-white/20">
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/10"></div>
                           <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-30 rounded-full filter blur-[1px]"></div>
                        </div>
@@ -185,10 +188,10 @@ const DosageGuide: React.FC = () => {
                     </div>
                  </div>
 
-                 {/* 3D CSS CAPSULES (Dark Mode) */}
+                 {/* 3D CSS CAPSULES: YELLOW TOP / LIGHT BROWN BOTTOM */}
                  <div className="flex space-x-4 mb-8 justify-center py-4 bg-[#222] rounded-xl border border-[#333]">
                     {[1, 2].map((i) => (
-                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#C8102E] to-[#8B0000] relative shadow-lg transform -rotate-12 border border-white/10">
+                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#D2691E] to-[#8B0000] relative shadow-lg transform -rotate-12 border border-white/10">
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/30"></div>
                           <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-20 rounded-full filter blur-[1px]"></div>
                        </div>

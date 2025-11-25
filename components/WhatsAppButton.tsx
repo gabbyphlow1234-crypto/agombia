@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
 const WhatsAppButton: React.FC = () => {
   return (
     <a
-      href="https://wa.me/233591465273" 
+      href="https://wa.me/233244946525" 
       target="_blank"
       rel="noopener noreferrer"
       // Authentic WhatsApp Green and Icon Style

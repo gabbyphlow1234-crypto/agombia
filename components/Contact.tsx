@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Phone, MapPin, MessageCircle, Clock, Send, CheckCircle, Truck, Shield, AlertTriangle, Box, Globe, Mail } from 'lucide-react';
 
@@ -48,7 +49,7 @@ const Contact: React.FC = () => {
            <div className="lg:col-span-4 space-y-6">
               
               {/* WHATSAPP AGENT CARD - AUTHENTIC STYLING */}
-              <a href="https://wa.me/233591465273" target="_blank" rel="noreferrer" className="block group relative bg-[#128C7E] hover:bg-[#075E54] border border-[#25D366] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 overflow-hidden shadow-lg">
+              <a href="https://wa.me/233244946525" target="_blank" rel="noreferrer" className="block group relative bg-[#128C7E] hover:bg-[#075E54] border border-[#25D366] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 overflow-hidden shadow-lg">
                  <div className="absolute top-0 right-0 bg-[#25D366] px-3 py-1 rounded-bl-xl text-[10px] font-bold text-white uppercase tracking-widest flex items-center shadow-sm">
                     <span className="w-2 h-2 bg-white rounded-full animate-pulse mr-2"></span> Online
                  </div>
@@ -62,7 +63,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div className="ml-4 text-white">
                        <h4 className="font-agombia text-xl uppercase tracking-wide">WhatsApp</h4>
-                       <p className="text-white/90 text-xs font-mono font-bold">059 146 5273</p>
+                       <p className="text-white/90 text-xs font-mono font-bold">024 494 6525</p>
                     </div>
                  </div>
                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/20">

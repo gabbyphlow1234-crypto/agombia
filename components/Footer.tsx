@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
               <div>
                  <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Regulator</div>
                  <div className="text-white font-agombia text-lg">FDA Certified</div>
-                 <div className="text-[9px] text-[#C8102E]">FDA/HD.23-1234</div>
+                 <div className="text-[9px] text-[#C8102E]">FDA/HD.25-02062</div>
               </div>
            </div>
 

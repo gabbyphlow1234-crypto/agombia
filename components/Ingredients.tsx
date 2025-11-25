@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Sprout, Droplet, Sun, Leaf, FlaskConical, Search, ShieldCheck, Microscope } from 'lucide-react';
 
@@ -13,12 +14,12 @@ const Ingredients: React.FC = () => {
       potency: 98
     },
     {
-      name: "African Mahogany",
-      scientific: "Khaya senegalensis",
-      role: "The Stamina Bark",
-      desc: "A legendary bark used for centuries to enhance physical endurance, reduce fatigue, and boost male vitality.",
-      compounds: ["Saponins", "Sterols", "Iron"],
-      image: "https://images.unsplash.com/photo-1546816564-440b528c7572?auto=format&fit=crop&q=80&w=800", // Bark texture
+      name: "African Basil",
+      scientific: "Ocimum gratissimum",
+      role: "The Bio-Enhancer",
+      desc: "Known locally as 'Nunum', this aromatic herb supports digestive health and significantly reduces bodily inflammation.",
+      compounds: ["Eugenol", "Thymol", "Iron"],
+      image: "https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&q=80&w=800", // Basil/Green herb
       potency: 95
     },
     {

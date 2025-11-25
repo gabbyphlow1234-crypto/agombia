@@ -1,8 +1,11 @@
-import React from 'react';
-import { ShoppingBag, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ShoppingBag } from 'lucide-react';
 
 const GalleryStrip: React.FC = () => {
-  const images = [
+  const [images, setImages] = useState<string[]>([]);
+
+  // THE MASTER ASSET POOL
+  const assetPool = [
     "https://i.postimg.cc/MGQwRdnD/Gemini-Generated-Image-18kta218kta218kt.png",
     "https://i.postimg.cc/YqrtV6PC/Gemini-Generated-Image-1fscti1fscti1fsc.png",
     "https://i.postimg.cc/VvDP1hhL/Gemini-Generated-Image-1ujvwk1ujvwk1ujv.png",
@@ -80,7 +83,24 @@ const GalleryStrip: React.FC = () => {
     "https://i.postimg.cc/gJty4gHw/Gemini-Generated-Image-wokpw3wokpw3wokp-(1).jpg"
   ];
 
-  // Duplicate images for infinite scroll effect
+  useEffect(() => {
+    // --- ADVANCED RANDOMIZATION (Fisher-Yates Shuffle) ---
+    const shuffleArray = (array: string[]) => {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
+    setImages(shuffleArray(assetPool));
+  }, []);
+
+  // If not yet loaded, show empty/skeleton
+  if (images.length === 0) return null;
+
+  // Infinite Scroll Content (Original + Duplicate)
   const marqueeImages = [...images, ...images];
 
   return (
@@ -95,15 +115,31 @@ const GalleryStrip: React.FC = () => {
       </div>
 
       <div className="relative w-full flex">
-         <div className="flex animate-[scroll_120s_linear_infinite] group-hover/section:[animation-play-state:paused]">
+         {/* 
+            PERFORMANCE OPTIMIZATION:
+            1. Slowed animation duration to 600s (VERY SLOW) to reduce rendering load per frame
+            2. Added will-change: transform for GPU acceleration
+         */}
+         <div className="flex animate-[scroll_600s_linear_infinite] will-change-transform group-hover/section:[animation-play-state:paused]">
             {marqueeImages.map((src, index) => (
-               <div key={index} className="relative w-[300px] h-[400px] flex-shrink-0 mx-2 rounded-xl overflow-hidden group/card cursor-pointer border border-gray-800 hover:border-[#FFD700] transition-all duration-300">
+               <div 
+                  key={index} 
+                  className="relative w-[300px] h-[400px] flex-shrink-0 mx-2 rounded-xl overflow-hidden group/card cursor-pointer border border-gray-800 hover:border-[#FFD700] transition-all duration-300"
+                  style={{ contentVisibility: 'auto', contain: 'content' }} // Browser optimization for layout
+               >
                   
-                  {/* Image */}
+                  {/* 
+                     PERFORMANCE OPTIMIZATION:
+                     1. loading="lazy" for off-screen images
+                     2. decoding="async" for non-blocking decode
+                     3. CSS Zoom & Crop applied
+                  */}
                   <img 
                      src={src} 
                      alt={`Agombia Lifestyle`} 
-                     className="w-full h-full object-cover object-[center_20%] filter grayscale group-hover/card:grayscale-0 transition-all duration-700 transform scale-125 group-hover/card:scale-135"
+                     loading="lazy"
+                     decoding="async"
+                     className="w-full h-full object-cover object-[center_20%] filter grayscale group-hover/card:grayscale-0 transition-all duration-700 transform scale-110 group-hover/card:scale-125"
                   />
 
                   {/* Dark Overlay */}

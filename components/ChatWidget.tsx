@@ -216,7 +216,7 @@ const ChatWidget: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-white font-agombia uppercase tracking-wider text-lg leading-none flex items-center">
-                  Adwoa AI <span className="bg-[#C8102E] text-[8px] px-1.5 py-0.5 rounded ml-2 tracking-normal">BOT</span>
+                  AMA AI <span className="bg-[#C8102E] text-[8px] px-1.5 py-0.5 rounded ml-2 tracking-normal">BOT</span>
                 </h3>
                 <p className="text-[#FFD700] text-[10px] font-bold uppercase tracking-widest mt-1">{statusText}</p>
               </div>

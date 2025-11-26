@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Sun, Moon, Droplet, Utensils, AlertTriangle, CheckCircle2, Info, Clock, CloudSun, RefreshCw } from 'lucide-react';
+import { Sun, Moon, Droplet, Utensils, AlertTriangle, CheckCircle2, Info, Clock, CloudSun, Zap, BatteryCharging, Sparkles } from 'lucide-react';
 
 const DosageGuide: React.FC = () => {
   const [activeTip, setActiveTip] = useState<number | null>(null);
@@ -11,8 +10,8 @@ const DosageGuide: React.FC = () => {
       text: "Agombia consists of fibrous roots. Water is the vehicle that transports these nutrients into your bloodstream. Drink at least 500ml (one sachet) with each dose."
     },
     {
-      title: "Avoid Alcohol",
-      text: "Alcohol dehydrates the system and competes with the liver, reducing the efficacy of the herbs. Avoid alcohol for at least 2 hours after dosing."
+      title: "Alcohol Compatible",
+      text: "Great news: Agombia is safe to consume with alcohol. It does not negatively interact with your drink, so you can maintain your lifestyle."
     },
     {
       title: "Missed a Dose?",
@@ -40,7 +39,7 @@ const DosageGuide: React.FC = () => {
            </p>
         </div>
 
-        {/* --- THE LIVING BIO-CLOCK ANIMATION (Restored) --- */}
+        {/* --- THE LIVING BIO-CLOCK ANIMATION --- */}
         <div className="relative w-64 h-64 mx-auto mb-16 hidden md:block">
            {/* Outer Orbit Ring */}
            <div className="absolute inset-0 rounded-full border-[1px] border-dashed border-gray-300 animate-spin-slow" style={{animationDuration: '60s'}}></div>
@@ -76,141 +75,148 @@ const DosageGuide: React.FC = () => {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
            
-           {/* === MORNING CARD (SOLAR) === */}
-           <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700] to-[#FFF0B4] rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl border-t-4 border-[#FFD700] overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full">
-                 <div className="absolute top-0 right-0 p-6 opacity-10">
-                    <Sun className="w-32 h-32 text-[#FFD700]" />
-                 </div>
+           {/* === MORNING CARD (Sunrise / Clarity) === */}
+           <div className="group relative h-full">
+              <div className="absolute inset-0 bg-gradient-to-b from-yellow-200 to-transparent rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+              <div className="relative bg-gradient-to-b from-[#FFFDE7] to-white rounded-3xl p-8 shadow-xl border-t-8 border-yellow-400 overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
                  
-                 <div className="flex items-center mb-6 relative z-10">
-                    <div className="bg-[#FFF8E1] p-3 rounded-full mr-4 border border-[#FFD700]">
-                       <Sun className="w-8 h-8 text-[#D4AF37]" />
+                 {/* Sunrise Graphic */}
+                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-300 rounded-full opacity-20 blur-xl"></div>
+                 
+                 <div className="flex justify-between items-start mb-6">
+                    <div className="bg-yellow-100 p-3 rounded-2xl border border-yellow-300">
+                       <Sun className="w-8 h-8 text-yellow-600" />
                     </div>
-                    <div>
-                       <h3 className="font-agombia text-2xl text-[#1A1A1A] uppercase">Morning</h3>
-                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">After Breakfast</p>
+                    <div className="bg-yellow-50 px-3 py-1 rounded-full border border-yellow-200 text-[10px] font-bold uppercase tracking-widest text-yellow-700">
+                        7:00 AM - 9:00 AM
                     </div>
                  </div>
 
-                 {/* 3D CSS CAPSULES: YELLOW TOP / LIGHT BROWN BOTTOM */}
-                 <div className="flex space-x-4 mb-8 justify-center py-4 bg-gray-50 rounded-xl border border-gray-100">
+                 <h3 className="font-agombia text-3xl text-[#1A1A1A] uppercase mb-1">Morning</h3>
+                 <p className="text-sm font-medium text-yellow-700 uppercase tracking-widest mb-6">System Activation</p>
+
+                 {/* 3D Capsules - Yellow/Brown */}
+                 <div className="flex space-x-3 mb-8 justify-center py-6 bg-white rounded-2xl border border-yellow-100 shadow-inner">
                     {[1, 2].map((i) => (
-                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#D2691E] to-[#8B4513] relative shadow-lg transform rotate-12 border border-white/20">
+                       <div key={i} className="w-6 h-16 rounded-full bg-[#8B4513] relative shadow-md transform rotate-6 border border-white/40 overflow-hidden">
                           {/* Top Half: Yellow */}
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/10"></div>
-                          {/* Reflection */}
-                          <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-30 rounded-full filter blur-[1px]"></div>
+                          {/* Bottom Half: Brown */}
+                          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#D2691E] to-[#8B4513] rounded-b-full"></div>
+                          {/* Highlight */}
+                          <div className="absolute top-2 right-1.5 w-1.5 h-4 bg-white opacity-40 rounded-full filter blur-[1px] z-10"></div>
                        </div>
                     ))}
                  </div>
 
-                 <div className="space-y-3 text-sm text-gray-600 mb-6">
-                    <div className="flex items-center">
-                       <CheckCircle2 className="w-5 h-5 text-[#FFD700] mr-3" />
-                       <span>Take <strong>2 Capsules</strong></span>
+                 <div className="mt-auto space-y-4">
+                    <div className="flex items-center bg-white p-3 rounded-xl border border-yellow-100 shadow-sm">
+                       <CheckCircle2 className="w-5 h-5 text-yellow-500 mr-3 flex-shrink-0" />
+                       <span className="text-sm text-gray-700">Take <strong>2 Capsules</strong></span>
                     </div>
-                    <div className="flex items-center">
-                       <Utensils className="w-5 h-5 text-gray-400 mr-3" />
-                       <span>After a full meal</span>
+                    <div className="flex items-center bg-white p-3 rounded-xl border border-yellow-100 shadow-sm">
+                       <Utensils className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" />
+                       <span className="text-sm text-gray-600">After Breakfast</span>
                     </div>
-                 </div>
-
-                 <div className="bg-[#FFF8E1] rounded-lg p-3 text-center">
-                    <span className="text-[#D4AF37] font-agombia uppercase text-sm tracking-wide">Activation</span>
                  </div>
               </div>
            </div>
 
-           {/* === AFTERNOON CARD (NEW) === */}
-           <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-300 to-yellow-200 rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-xl border-t-4 border-orange-400 overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full">
-                 <div className="absolute top-0 right-0 p-6 opacity-10">
-                    <CloudSun className="w-32 h-32 text-orange-400" />
-                 </div>
+           {/* === AFTERNOON CARD (Solar Peak / Sustain) === */}
+           <div className="group relative h-full">
+              <div className="absolute inset-0 bg-gradient-to-b from-orange-300 to-transparent rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+              <div className="relative bg-gradient-to-b from-[#FFF3E0] to-white rounded-3xl p-8 shadow-xl border-t-8 border-orange-500 overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col">
                  
-                 <div className="flex items-center mb-6 relative z-10">
-                    <div className="bg-orange-50 p-3 rounded-full mr-4 border border-orange-300">
-                       <CloudSun className="w-8 h-8 text-orange-500" />
+                 {/* High Noon Graphic */}
+                 <div className="absolute -top-16 -right-16 w-40 h-40 bg-orange-400 rounded-full opacity-10 blur-2xl"></div>
+                 
+                 <div className="flex justify-between items-start mb-6">
+                    <div className="bg-orange-100 p-3 rounded-2xl border border-orange-300">
+                       <Zap className="w-8 h-8 text-orange-600" />
                     </div>
-                    <div>
-                       <h3 className="font-agombia text-2xl text-[#1A1A1A] uppercase">Afternoon</h3>
-                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">After Lunch</p>
+                    <div className="bg-orange-50 px-3 py-1 rounded-full border border-orange-200 text-[10px] font-bold uppercase tracking-widest text-orange-700">
+                        12:00 PM - 2:00 PM
                     </div>
                  </div>
 
-                 {/* 3D CSS CAPSULES: YELLOW TOP / LIGHT BROWN BOTTOM */}
-                 <div className="flex space-x-4 mb-8 justify-center py-4 bg-gray-50 rounded-xl border border-gray-100">
+                 <h3 className="font-agombia text-3xl text-[#1A1A1A] uppercase mb-1">Afternoon</h3>
+                 <p className="text-sm font-medium text-orange-700 uppercase tracking-widest mb-6">Peak Sustain</p>
+
+                 {/* 3D Capsules - Yellow/Brown */}
+                 <div className="flex space-x-3 mb-8 justify-center py-6 bg-white rounded-2xl border border-orange-100 shadow-inner">
                     {[1, 2].map((i) => (
-                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#D2691E] to-[#8B0000] relative shadow-lg transform rotate-12 border border-white/20">
+                       <div key={i} className="w-6 h-16 rounded-full bg-[#8B4513] relative shadow-md transform -rotate-6 border border-white/40 overflow-hidden">
+                          {/* Top Half: Yellow */}
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/10"></div>
-                          <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-30 rounded-full filter blur-[1px]"></div>
+                          {/* Bottom Half: Brown */}
+                          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#D2691E] to-[#8B4513] rounded-b-full"></div>
+                          {/* Highlight */}
+                          <div className="absolute top-2 right-1.5 w-1.5 h-4 bg-white opacity-40 rounded-full filter blur-[1px] z-10"></div>
                        </div>
                     ))}
                  </div>
 
-                 <div className="space-y-3 text-sm text-gray-600 mb-6">
-                    <div className="flex items-center">
-                       <CheckCircle2 className="w-5 h-5 text-orange-500 mr-3" />
-                       <span>Take <strong>2 Capsules</strong></span>
+                 <div className="mt-auto space-y-4">
+                    <div className="flex items-center bg-white p-3 rounded-xl border border-orange-100 shadow-sm">
+                       <CheckCircle2 className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
+                       <span className="text-sm text-gray-700">Take <strong>2 Capsules</strong></span>
                     </div>
-                    <div className="flex items-center">
-                       <Utensils className="w-5 h-5 text-gray-400 mr-3" />
-                       <span>After a full meal</span>
+                    <div className="flex items-center bg-white p-3 rounded-xl border border-orange-100 shadow-sm">
+                       <Utensils className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" />
+                       <span className="text-sm text-gray-600">After Lunch</span>
                     </div>
-                 </div>
-
-                 <div className="bg-orange-50 rounded-lg p-3 text-center">
-                    <span className="text-orange-600 font-agombia uppercase text-sm tracking-wide">Sustain</span>
                  </div>
               </div>
            </div>
 
-           {/* === EVENING CARD (LUNAR) === */}
-           <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-bl from-[#1A1A1A] to-[#2C3E50] rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div className="relative bg-[#1A1A1A] rounded-3xl p-8 shadow-xl border-t-4 border-[#C8102E] overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full">
-                 <div className="absolute top-0 right-0 p-6 opacity-10">
-                    <Moon className="w-32 h-32 text-white" />
+           {/* === EVENING CARD (Lunar / Restoration) === */}
+           <div className="group relative h-full">
+              <div className="absolute inset-0 bg-gradient-to-b from-indigo-900 to-transparent rounded-3xl blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+              <div className="relative bg-[#0F172A] rounded-3xl p-8 shadow-2xl border-t-8 border-[#C8102E] overflow-hidden hover:-translate-y-2 transition-transform duration-300 h-full flex flex-col ring-1 ring-white/10">
+                 
+                 {/* Starry Night Graphic */}
+                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+                 <div className="absolute top-0 right-0 p-6 opacity-20">
+                    <Moon className="w-24 h-24 text-white" />
                  </div>
                  
-                 <div className="flex items-center mb-6 relative z-10">
-                    <div className="bg-[#333] p-3 rounded-full mr-4 border border-[#C8102E]">
-                       <Moon className="w-8 h-8 text-white" />
+                 <div className="flex justify-between items-start mb-6 relative z-10">
+                    <div className="bg-white/10 p-3 rounded-2xl border border-white/20 backdrop-blur-md">
+                       <Moon className="w-8 h-8 text-[#FFD700]" />
                     </div>
-                    <div>
-                       <h3 className="font-agombia text-2xl text-white uppercase">Evening</h3>
-                       <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">After Dinner</p>
+                    <div className="bg-white/10 px-3 py-1 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest text-gray-300">
+                        6:00 PM - 8:00 PM
                     </div>
                  </div>
 
-                 {/* 3D CSS CAPSULES: YELLOW TOP / LIGHT BROWN BOTTOM */}
-                 <div className="flex space-x-4 mb-8 justify-center py-4 bg-[#222] rounded-xl border border-[#333]">
+                 <h3 className="font-agombia text-3xl text-white uppercase mb-1 relative z-10">Evening</h3>
+                 <p className="text-sm font-medium text-[#C8102E] uppercase tracking-widest mb-6 relative z-10">Deep Repair</p>
+
+                 {/* 3D Capsules - Yellow/Brown (Dark Mode) */}
+                 <div className="flex space-x-3 mb-8 justify-center py-6 bg-[#1E293B] rounded-2xl border border-white/10 shadow-inner relative z-10">
                     {[1, 2].map((i) => (
-                       <div key={i} className="w-8 h-20 rounded-full bg-gradient-to-b from-[#D2691E] to-[#8B0000] relative shadow-lg transform -rotate-12 border border-white/10">
+                       <div key={i} className="w-6 h-16 rounded-full bg-[#8B4513] relative shadow-[0_0_15px_rgba(200,16,46,0.4)] transform rotate-0 border border-white/20 overflow-hidden">
+                          {/* Top Half: Yellow */}
                           <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#FFD700] to-[#D4AF37] rounded-t-full border-b border-black/30"></div>
-                          <div className="absolute top-2 right-2 w-2 h-6 bg-white opacity-20 rounded-full filter blur-[1px]"></div>
+                          {/* Bottom Half: Brown */}
+                          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#D2691E] to-[#8B4513] rounded-b-full"></div>
+                          {/* Highlight */}
+                          <div className="absolute top-2 right-1.5 w-1.5 h-4 bg-white opacity-30 rounded-full filter blur-[1px] z-10"></div>
                        </div>
                     ))}
                  </div>
 
-                 <div className="space-y-3 text-sm text-gray-400 mb-6">
-                    <div className="flex items-center">
-                       <CheckCircle2 className="w-5 h-5 text-[#C8102E] mr-3" />
-                       <span className="text-white">Take <strong>2 Capsules</strong></span>
+                 <div className="mt-auto space-y-4 relative z-10">
+                    <div className="flex items-center bg-white/5 p-3 rounded-xl border border-white/10">
+                       <CheckCircle2 className="w-5 h-5 text-[#C8102E] mr-3 flex-shrink-0" />
+                       <span className="text-sm text-gray-300">Take <strong>2 Capsules</strong></span>
                     </div>
-                    <div className="flex items-center">
-                       <Utensils className="w-5 h-5 text-gray-600 mr-3" />
-                       <span>After a full meal</span>
+                    <div className="flex items-center bg-white/5 p-3 rounded-xl border border-white/10">
+                       <Utensils className="w-5 h-5 text-gray-500 mr-3 flex-shrink-0" />
+                       <span className="text-sm text-gray-400">After Dinner</span>
                     </div>
-                 </div>
-
-                 <div className="bg-[#2A1A1A] rounded-lg p-3 text-center border border-[#C8102E]/30">
-                    <span className="text-[#C8102E] font-agombia uppercase text-sm tracking-wide">Repair</span>
                  </div>
               </div>
            </div>
